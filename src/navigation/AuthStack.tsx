@@ -1,7 +1,6 @@
 import React from "react"
 import { createStackNavigator } from "@react-navigation/stack";
-import { GrassyForm } from "../screen/GrassyForm";
-import { LoginScreen } from "../screen/LoginScreen";
+import { LoginScreen } from "../screen/login";
 
 const Stack = createStackNavigator();
 
