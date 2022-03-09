@@ -1,11 +1,8 @@
 import React from "react"
-import { createStackNavigator } from "@react-navigation/stack";
 import { GrassyForm } from "../screen/form";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { LoginScreen } from "../screen/login";
 import Notification from "../screen/notification";
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export const AppStack =()=>{
