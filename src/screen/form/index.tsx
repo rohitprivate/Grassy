@@ -1,9 +1,11 @@
+import moment from "moment"
 import React, { useState } from "react"
 import { View } from "react-native"
 import DatePicker from "react-native-date-picker"
 import { Button, Text } from "react-native-elements"
 import SelectDropdown from "react-native-select-dropdown"
 import { GRASS_TYPES } from "../../constants"
+import { setMowingNotificationToDatabase } from "../../utils/myMowingService"
 
 export const GrassyForm = () => {
     const [date, setDate] = useState(new Date())
@@ -11,8 +13,8 @@ export const GrassyForm = () => {
     const [value, setValue] = useState(null);
 
 
-    const onAddToDatabase=()=>{
-    console.log("Selected Value",value,date)
+    const onAddToDatabase = () => {
+        if (value) setMowingNotificationToDatabase(moment(date.toDateString()).format("YYYY-MM-DD"), value)
     }
     return <View>
         <Text>Grassy Input</Text>
@@ -30,8 +32,8 @@ export const GrassyForm = () => {
         <SelectDropdown
             data={GRASS_TYPES}
             onSelect={(selectedItem, index) => {
-setValue(selectedItem)            
-}}
+                setValue(selectedItem)
+            }}
             buttonTextAfterSelection={(selectedItem, index) => {
                 // text represented after item is selected
                 // if data array is an array of objects then return selectedItem.property to render after item is selected
@@ -44,6 +46,6 @@ setValue(selectedItem)
             }}
         />
         <Button title={`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`} onPress={() => setOpen(true)} />
-        <Button title={"Add"} onPress={onAddToDatabase}/>
+        <Button title={"Add"} onPress={onAddToDatabase} />
     </View>
 }
