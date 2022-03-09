@@ -1,22 +1,12 @@
+import { IMOWING_RULES } from "../types"
+
 export const GRASS_TYPES=[
     "Kikuyu",
     "Kentucky Blue",
     "Buffalo",
     "Cynodon"
 ]
-export type GRASS_ELEMENTS="Kikuyu" | "Kentucky Blue" | "Buffalo" | "Cynodon"
-type IMOWING_RULES = {
-    [key in GRASS_ELEMENTS] :{
-      growthRateSummer:number,
-      growthRateWinter:number,
-      mowLength:number
-    }
-    
-}
-export interface IGrassObject{
-    grassType:string,
-    dateToMow:string
-}
+
 export const MOWING_RULES:IMOWING_RULES={
   "Kikuyu":{
       growthRateSummer:0.65,

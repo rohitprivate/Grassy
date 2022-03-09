@@ -19,9 +19,6 @@ const Notification: React.FC<IProps> = (props: IProps) => {
 
         return unsubscribe;
     }, [props.navigation]);
-    useEffect(() => {
-        console.log("List received", list)
-    }, [list])
     const renderItem = ({item}:{item:IGrassObject}) => {
         return (
             <View>

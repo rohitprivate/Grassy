@@ -10,14 +10,21 @@ export const Routes = () => {
     const { user, setUser } = useContext(AuthContext)
     const [initializing, setInitializing] = useState(true)
   const onAuthStateChanged=(user:FirebaseAuthTypes.User | null) => {
-    user?.getIdToken().then((token)=>{
-       setUser({
-           id: user?.uid,
-           userName: user?.displayName,
-           email: user?.email,
-           token,
-       })
-   })
+      if(user)
+      {
+        user?.getIdToken().then((token)=>{
+            setUser({
+                id: user?.uid,
+                userName: user?.displayName,
+                email: user?.email,
+                token,
+            })
+        })
+      }
+      else {
+      setUser(user)
+      }
+  
    if(initializing) setInitializing(false)
 
 } 
@@ -27,8 +34,8 @@ export const Routes = () => {
     }, [])
 
     if(initializing) return null;
-
+    console.log("USER OBJECT",user)
     return <NavigationContainer>
-       { user ?<AppStack />: <AuthStack/>}
+       { user===null ?<AuthStack />: <AppStack/>}
     </NavigationContainer>
 }

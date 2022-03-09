@@ -1,22 +1,23 @@
 import React, { useContext, useState } from "react"
 import { StyleSheet, Text, View } from "react-native"
-import { Button, Input } from "react-native-elements";
+import { Button } from "react-native-elements";
+import GrassInput from "../../components/GrassInput";
 import { AuthContext } from "../../provider/AuthProvider";
 
 export const LoginScreen = () => {
 
-    const [password,setPassword]=useState<string>("")
-    const [email,setEmail]=useState<string>("") ;
-    const {login} =useContext(AuthContext)
-    const onLoginPress=()=>{
-            login(email,password)
+    const [password, setPassword] = useState<string>("")
+    const [email, setEmail] = useState<string>("");
+    const { login } = useContext(AuthContext)
+    const onLoginPress = () => {
+        login(email, password)
     }
     return <View style={styles.container}>
         <Text>Login</Text>
-        <Input
-            placeholder='emailAddress@domain.com' autoCompleteType={undefined} value={email} onChangeText={(email)=>{setEmail(email)}}/>
-        <Input
-            placeholder='password' autoCompleteType={undefined} secureTextEntry={true} value={password} onChangeText={(password)=>{setPassword(password)}} />
+        <GrassInput
+            placeholder='emailAddress@domain.com' autoCompleteType={undefined} value={email} onChangeText={(email) => { setEmail(email) }} />
+        <GrassInput
+            placeholder='password' autoCompleteType={undefined} secureTextEntry={true} value={password} onChangeText={(password) => { setPassword(password) }} />
         <Button
             title="Log in"
             loading={false}

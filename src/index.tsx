@@ -1,8 +1,6 @@
 import React from "react";
-import { SafeAreaView, Text, View } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import 'react-native-gesture-handler';
-import { AuthProvider } from "./provider/AuthProvider";
+import {  AuthProvider } from "./provider/AuthProvider";
 import { Routes } from "./navigation/Routes";
 
 const App=()=>{

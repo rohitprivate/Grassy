@@ -4,8 +4,9 @@ import { User } from "../types";
 
 interface IAuthContext {
     user: User | null
-    setUser:(user:User)=>void 
+    setUser:(user:User | null)=>void 
     login:((email:string,password:string)=>void)
+    signOut:()=>void
 }
 interface IAuthProviderProps {
     children:Element
@@ -17,14 +18,22 @@ export const AuthProvider = ({ children }:IAuthProviderProps) => {
         try {
             auth().signInWithEmailAndPassword(email, password)
         } catch (err) {
-            console.log(err)
+            // console.log(err)
+        }
+    }
+    const signOut=()=>{
+        try {
+            auth().signOut()
+        } catch (err) {
+            // console.log(err)
         }
     }
     return <AuthContext.Provider
         value={{
             user,
             setUser,
-            login
+            login,
+            signOut
         }}
     >
         {children}
